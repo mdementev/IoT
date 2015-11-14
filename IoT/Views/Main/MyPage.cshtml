@@ -207,15 +207,15 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 
 			$.ajax('/api/values', {complete: function(data){
 				$.each(JSON.parse(data.responseText), function (index, value) {
-					switch (vals[0]) {
+					switch (index) {
 						case "dataTemp":
-							$scope.dataTemp = vals[1];
+							$scope.dataTemp = value;
 						case "dataLt":
-							$scope.dataLt = vals[1];
+							$scope.dataLt = value;
 						case "dataFood":
-							$scope.dataFood = vals[1];
+							$scope.dataFood = value;
 						case "dataLx":
-							$scope.dataLx = vals[1];
+							$scope.dataLx = value;
 						default:
 							console.log(JSON.parse(data.responseText));
 					}
