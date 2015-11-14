@@ -32,7 +32,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 					<md-list-item class="md-2-line md-no-proxy" role="listitem">
 						<img width="40" height="40" src="~/Content/images/thermometer73.svg" class="md-avatar" alt="">
 						<div class="md-list-item-text">
-							<h3>40&deg;C</h3>
+							<h3>{{dataTemp}}&deg;C</h3>
 							<p>Температура</p>
 						</div>
 					</md-list-item>
@@ -40,7 +40,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 					<md-list-item class="md-2-line md-no-proxy" role="listitem">
 						<img width="40" height="40" src="~/Content/images/illumination12.svg" class="md-avatar" alt="">
 						<div class="md-list-item-text">
-							<h3>20 лк(люкс)</h3>
+							<h3>{{dataLx}} лк(люкс)</h3>
 							<p>Освещенность</p>
 						</div>
 					</md-list-item>
@@ -48,7 +48,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 					<md-list-item class="md-2-line md-no-proxy" role="listitem">
 						<img width="40" height="40" src="~/Content/images/pet60.svg" class="md-avatar" alt="">
 						<div class="md-list-item-text">
-							<h3>Норма</h3>
+							<h3>{{dataLt}}</h3>
 							<p>Уровень воды</p>
 						</div>
 					</md-list-item>
@@ -56,7 +56,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 					<md-list-item class="md-2-line md-no-proxy" role="listitem">
 						<img width="40" height="40" src="~/Content/images/cat40.svg" class="md-avatar" alt="">
 						<div class="md-list-item-text">
-							<h3>80%</h3>
+							<h3>{{dataFood}}%</h3>
 							<p>Корм</p>
 						</div>
 					</md-list-item>
@@ -196,6 +196,32 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 -->
 <script>
 	app.controller('AppCtrl', function ($scope, $mdDialog) {
+
+		$scope.dataTemp = 0;
+		$scope.dataLt 	= 0;
+		$scope.dataFood = 0;
+		$scope.dataLx 	= 0;
+
+		setInterval(function () {
+			$.ajax('/api/values', {complete: function(data){
+				$.each(JSON.parse(data.responseText), function(index, vals) {
+					console.log(vals[0])
+					switch (vals[0]) {
+						case "dataTemp":
+							$scope.dataTemp = vals[1];
+						case "dataLt":
+							$scope.dataLt = vals[1];
+						case "dataFood":
+							$scope.dataFood = vals[1];
+						case "dataLx":
+							$scope.dataLx = vals[1];
+						default:
+							console.log(JSON.parse(data.responseText));
+					}
+				})
+			}});
+		}, 10000);
+
 		$scope.status = '  ';
 		$scope.showAdvanced = function (ev) {
 			$mdDialog.show({
