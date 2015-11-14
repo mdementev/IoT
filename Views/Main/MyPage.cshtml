@@ -10,12 +10,16 @@
 </md-sidenav>
 <md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
 </md-sidenav>
-<div layout="column" flex id="content" class="b-feed md-whiteframe-11dp">
+<div layout="column" flex id="content" class="b-feed md-whiteframe-11dp" ng-controller="AppCtrl">
 
 
     <md-content layout="column" flex class="md-padding b-feed-content">
 
-        <div ng-controller="AppCtrl" ng-cloak class="b-feed-content">
+        <md-button class="md-primary md-raised" ng-click="showAdvanced($event)" flex-sm="100" flex-md="100" flex-gt-md="auto">
+            Custom Dialog
+        </md-button>
+
+        <div ng-cloak class="b-feed-content">
             <md-toolbar md-scroll-shrink ng-if="true">
                 <div class="md-toolbar-tools">
                     <h3>

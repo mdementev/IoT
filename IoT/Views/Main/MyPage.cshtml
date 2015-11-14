@@ -1,94 +1,173 @@
 ﻿@{
-    ViewBag.Title = "MyPage";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+ViewBag.Title = "MyPage";
+Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-    <md-card class="b-avatar md-whiteframe-11dp">
-        <img alt="Sandeep Gravatar image" src="@Url.Content("~/content/images/petushok.jpg")" />
-    </md-card>
+	<md-card class="b-avatar md-whiteframe-11dp">
+		<img alt="Sandeep Gravatar image" src='@Url.Content("~/Content/images/petushok.jpg")' />
+	</md-card>
 </md-sidenav>
 <md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
 </md-sidenav>
-<div layout="column" flex id="content" class="b-feed md-whiteframe-11dp">
+<div layout="column" flex id="content" class="b-feed md-whiteframe-11dp" ng-controller="AppCtrl">
 
+	<md-button class="md-primary md-raised" ng-click="showAdvanced($event)" flex-sm="100" flex-md="100" flex-gt-md="auto">
+		Настройки
+	</md-button>
 
-    <md-content layout="column" flex class="md-padding b-feed-content">
+	<md-content layout="column" flex class="md-padding b-feed-content">
 
-        <div ng-controller="AppCtrl" ng-cloak class="b-feed-content">
-            <md-toolbar ng-if="true">
-                <div class="md-toolbar-tools">
-                    <h3>
-                        <span>Feed</span>
-                    </h3>
-                </div>
-            </md-toolbar>
-            <md-content>
-                <md-list>
-                    <md-list-item class="md-3-line" ng-repeat="item in todos">
-                        <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
-                        <div class="md-list-item-text" layout="column">
-                            <h3>{{ item.who }}</h3>
-                            <h4>{{ item.what }}</h4>
-                            <p>{{ item.notes }}</p>
-                        </div>
-                    </md-list-item>
-                </md-list>
-            </md-content>
-        </div>
+		<div ng-cloak class="b-feed-content">
+			<md-toolbar ng-if="true">
+				<div class="md-toolbar-tools">
+					<h3>
+						<span>Feed</span>
+					</h3>
+				</div>
+			</md-toolbar>
+			<md-content>
+				<md-list>
+					<md-list-item class="md-3-line" ng-repeat="item in todos">
+						<img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}"/>
 
-    </md-content>
+						<div class="md-list-item-text" layout="column">
+							<h3>{{ item.who }}</h3>
+							<h4>{{ item.what }}</h4>
+
+							<p>{{ item.notes }}</p>
+						</div>
+					</md-list-item>
+				</md-list>
+			</md-content>
+		</div>
+
+	</md-content>
+
+	<md-dialog style="" id="md-dialog-settings" aria-label="Mango (Fruit)" ng-cloak>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Mango (Fruit)</h2>
+				<span class="flex"></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<md-icon md-svg-src="~/Content/images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-content style="width: 600px; padding: 10px 40px;">
+			<h3>
+				RGB
+				<span ng-attr-style="border: 1px solid #333; background: rgb({{color.red}},{{color.green}},{{color.blue}})">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			</h3>
+
+			<div layout>
+				<div flex="10" layout layout-align="center center">
+					<span class="md-body-1">R</span>
+				</div>
+				<md-slider flex min="0" max="100" ng-model="color.red" aria-label="red" id="red-slider" class>
+				</md-slider>
+				<div flex="20" layout layout-align="center center" style="padding-left: 20px;">
+					<input flex type="text" ng-model="color.red" aria-label="red" aria-controls="red-slider">
+				</div>
+			</div>
+			<div layout>
+				<div flex="10" layout layout-align="center center">
+					<span class="md-body-1">G</span>
+				</div>
+				<md-slider flex ng-model="color.green" min="0" max="100" aria-label="green" id="green-slider" class="md-accent">
+				</md-slider>
+				<div flex="20" layout layout-align="center center" style="padding-left: 20px;">
+					<input flex type="text" ng-model="color.green" aria-label="green" aria-controls="green-slider">
+				</div>
+			</div>
+			<h3>Disabled</h3>
+			<md-slider ng-model="disabled1" ng-disabled="true" aria-label="Disabled 1"></md-slider>
+		</md-content>
+	</md-dialog>
+
 </div>
 
 <script>
+	app.controller('AppCtrl', function ($scope, $mdDialog) {
+		$scope.status = '  ';
+		$scope.showAdvanced = function (ev) {
+			$mdDialog.show({
+						controller: DialogController,
+						template: $('#md-dialog-settings').html().toString(),
+						parent: angular.element(document.body),
+						targetEvent: ev,
+						clickOutsideToClose: true
+					})
+					.then(function (answer) {
+						$scope.status = 'You said the information was "' + answer + '".';
+					}, function () {
+						$scope.status = 'You cancelled the dialog.';
+					});
+		};
 
-    app.controller('AppController', function ($mdSidenav) {
-        var vm = this;
+		var imagePath = '@Url.Content("~/content/images/60.jpeg")';
+		$scope.todos = [
+			{
+				face: imagePath,
+				what: 'Brunch this weekend?',
+				who: 'Min Li Chan',
+				when: '3:08PM',
+				notes: " I'll be in your neighborhood doing errands"
+			},
+			{
+				face: imagePath,
+				what: 'Brunch this weekend?',
+				who: 'Min Li Chan',
+				when: '3:08PM',
+				notes: " I'll be in your neighborhood doing errands"
+			},
+			{
+				face: imagePath,
+				what: 'Brunch this weekend?',
+				who: 'Min Li Chan',
+				when: '3:08PM',
+				notes: " I'll be in your neighborhood doing errands"
+			},
+			{
+				face: imagePath,
+				what: 'Brunch this weekend?',
+				who: 'Min Li Chan',
+				when: '3:08PM',
+				notes: " I'll be in your neighborhood doing errands"
+			},
+			{
+				face: imagePath,
+				what: 'Brunch this weekend?',
+				who: 'Min Li Chan',
+				when: '3:08PM',
+				notes: " I'll be in your neighborhood doing errands"
+			}
+		];
+	});
 
-        vm.toggleSidenav = function (menuId) {
-            $mdSidenav(menuId).toggle();
-        };
+	function DialogController($scope, $mdDialog) {
+		$scope.hide = function () {
+			$mdDialog.hide();
+		};
+		$scope.cancel = function () {
+			$mdDialog.cancel();
+		};
+		$scope.answer = function (answer) {
+			$mdDialog.hide(answer);
+		};
+	}
 
-    });
-
-    app.controller('AppCtrl', function ($scope) {
-        var imagePath = '@Url.Content("~/content/images/60.jpeg")';
-            $scope.todos = [
-              {
-                  face: imagePath,
-                  what: 'Brunch this weekend?',
-                  who: 'Min Li Chan',
-                  when: '3:08PM',
-                  notes: " I'll be in your neighborhood doing errands"
-              },
-              {
-                  face: imagePath,
-                  what: 'Brunch this weekend?',
-                  who: 'Min Li Chan',
-                  when: '3:08PM',
-                  notes: " I'll be in your neighborhood doing errands"
-              },
-              {
-                  face: imagePath,
-                  what: 'Brunch this weekend?',
-                  who: 'Min Li Chan',
-                  when: '3:08PM',
-                  notes: " I'll be in your neighborhood doing errands"
-              },
-              {
-                  face: imagePath,
-                  what: 'Brunch this weekend?',
-                  who: 'Min Li Chan',
-                  when: '3:08PM',
-                  notes: " I'll be in your neighborhood doing errands"
-              },
-              {
-                  face: imagePath,
-                  what: 'Brunch this weekend?',
-                  who: 'Min Li Chan',
-                  when: '3:08PM',
-                  notes: " I'll be in your neighborhood doing errands"
-              }
-            ];
-        });
+	angular.module('sliderDemo1', ['ngMaterial'])
+			.controller('AppCtrl', function ($scope) {
+				$scope.color = {
+					red: Math.floor(Math.random() * 255),
+					green: Math.floor(Math.random() * 255),
+					blue: Math.floor(Math.random() * 255)
+				};
+				$scope.rating1 = 3;
+				$scope.rating2 = 2;
+				$scope.rating3 = 4;
+				$scope.disabled1 = 0;
+				$scope.disabled2 = 70;
+			});
 </script>
