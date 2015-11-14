@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,9 +12,10 @@ namespace IoT.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public string[] Get()
         {
-            return new string[] { "value1", "value2" };
+            
+            return new string[] {"{'temp':'26','waterlevel':'5','korm':'70','svet':'30'}"};
         }
 
         // GET api/values/5
