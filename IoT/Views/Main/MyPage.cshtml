@@ -207,13 +207,13 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 				$.each(JSON.parse(data.responseText), function(index, vals) {
 					console.log(vals[0])
 					switch (vals[0]) {
-						case "temp":
+						case "dataTemp":
 							$scope.dataTemp = vals[1];
-						case "waterlevel":
+						case "dataLt":
 							$scope.dataLt = vals[1];
-						case "korm":
+						case "dataFood":
 							$scope.dataFood = vals[1];
-						case "svet":
+						case "dataLx":
 							$scope.dataLx = vals[1];
 						default:
 							console.log(JSON.parse(data.responseText));
