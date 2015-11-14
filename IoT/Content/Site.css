@@ -1,47 +1,102 @@
-﻿.fabToolbardemoBasicUsage md-fab-toolbar.md-right md-fab-trigger.align-with-text { left: 7px; }
-
-
-body {
-    padding-bottom: 20px;
+﻿div.layout-row {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 50px;
+.md-toolbar-tools a:hover {
+    color: #fff;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+md-fab-toolbar md-fab-trigger .md-fab-toolbar-background {
+    left: 0;
 }
 
-.inputdemoErrors .inputErrorsApp {
-  min-height: 48px; }
+.b-feed {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.b-avatar {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 280px;
+    height: 280px;
+}
 
+.b-avatar img {
+    width: 100%;
+    height: 100%;
+}
 
-.buttondemoBasicUsage section .md-button {
-  margin-top: 16px;
-  margin-bottom: 16px; }
+.b-feed {
+    max-width: 520px;
+    margin-left: auto;
+}
 
-.buttondemoBasicUsage section {
-  background: #f7f7f7;
-  border-radius: 3px;
-  text-align: center;
-  margin: 1em;
-  position: relative !important;
-  padding-bottom: 10px; }
-.buttondemoBasicUsage md-content {
-  margin-right: 7px; }
-.buttondemoBasicUsage section .md-button {
-  margin-top: 16px;
-  margin-bottom: 16px; }
-.buttondemoBasicUsage .label {
-  position: absolute;
-  bottom: 5px;
-  left: 7px;
-  font-size: 14px;
-  opacity: 0.54; }
+.b-link {
+    letter-spacing: 0.01em;
+    color: rgb(63,81,181);
+    text-decoration: none;
+}
+
+.b-link:hover {
+    text-decoration: underline;
+}
+
+/*.fabToolbardemoBasicUsage md-fab-toolbar.md-right md-fab-trigger.align-with-text {*/
+    /*left: 7px;*/
+/*}*/
+
+/*body {*/
+    /*padding-bottom: 20px;*/
+/*}*/
+
+/*!* Set padding to keep content from hitting the edges *!*/
+/*.body-content {*/
+    /*padding-left: 15px;*/
+    /*padding-right: 15px;*/
+    /*padding-top: 50px;*/
+/*}*/
+
+/*!* Set width on the form input elements since they're 100% wide by default *!*/
+/*input,*/
+/*select,*/
+/*textarea {*/
+    /*max-width: 280px;*/
+/*}*/
+
+/*.inputdemoErrors .inputErrorsApp {*/
+    /*min-height: 48px;*/
+/*}*/
+
+/*.buttondemoBasicUsage section .md-button {*/
+    /*margin-top: 16px;*/
+    /*margin-bottom: 16px;*/
+/*}*/
+
+/*.buttondemoBasicUsage section {*/
+    /*background: #f7f7f7;*/
+    /*border-radius: 3px;*/
+    /*text-align: center;*/
+    /*margin: 1em;*/
+    /*position: relative !important;*/
+    /*padding-bottom: 10px;*/
+/*}*/
+
+/*.buttondemoBasicUsage md-content {*/
+    /*margin-right: 7px;*/
+/*}*/
+
+/*.buttondemoBasicUsage section .md-button {*/
+    /*margin-top: 16px;*/
+    /*margin-bottom: 16px;*/
+/*}*/
+
+/*.buttondemoBasicUsage .label {*/
+    /*position: absolute;*/
+    /*bottom: 5px;*/
+    /*left: 7px;*/
+    /*font-size: 14px;*/
+    /*opacity: 0.54;*/
+/*}*/

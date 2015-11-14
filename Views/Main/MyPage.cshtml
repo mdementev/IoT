@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "MyPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+    <md-card class="b-avatar md-whiteframe-11dp">
+        <img alt="Sandeep Gravatar image" src="@Url.Content("~/content/images/petushok.jpg")" />
+    </md-card>
+</md-sidenav>
+<md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+</md-sidenav>
+<div layout="column" flex id="content" class="b-feed md-whiteframe-11dp">
+
+
+    <md-content layout="column" flex class="md-padding b-feed-content">
+
+        <div ng-controller="AppCtrl" ng-cloak class="b-feed-content">
+            <md-toolbar md-scroll-shrink ng-if="true">
+                <div class="md-toolbar-tools">
+                    <h3>
+                        <span>Feed</span>
+                    </h3>
+                </div>
+            </md-toolbar>
+            <md-content>
+                <md-list>
+                    <md-list-item class="md-3-line" ng-repeat="item in todos">
+                        <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{ item.who }}</h3>
+                            <h4>{{ item.what }}</h4>
+                            <p>{{ item.notes }}</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </div>
+
+    </md-content>
+</div>
+
+<script>
+
+    app.controller('AppController', function ($mdSidenav) {
+        var vm = this;
+
+        vm.toggleSidenav = function (menuId) {
+            $mdSidenav(menuId).toggle();
+        };
+
+    });
+
+    app.controller('AppCtrl', function ($scope) {
+        var imagePath = '@Url.Content("~/content/images/60.jpeg")';
+            $scope.todos = [
+              {
+                  face: imagePath,
+                  what: 'Brunch this weekend?',
+                  who: 'Min Li Chan',
+                  when: '3:08PM',
+                  notes: " I'll be in your neighborhood doing errands"
+              },
+              {
+                  face: imagePath,
+                  what: 'Brunch this weekend?',
+                  who: 'Min Li Chan',
+                  when: '3:08PM',
+                  notes: " I'll be in your neighborhood doing errands"
+              },
+              {
+                  face: imagePath,
+                  what: 'Brunch this weekend?',
+                  who: 'Min Li Chan',
+                  when: '3:08PM',
+                  notes: " I'll be in your neighborhood doing errands"
+              },
+              {
+                  face: imagePath,
+                  what: 'Brunch this weekend?',
+                  who: 'Min Li Chan',
+                  when: '3:08PM',
+                  notes: " I'll be in your neighborhood doing errands"
+              },
+              {
+                  face: imagePath,
+                  what: 'Brunch this weekend?',
+                  who: 'Min Li Chan',
+                  when: '3:08PM',
+                  notes: " I'll be in your neighborhood doing errands"
+              }
+            ];
+        });
+</script>
+
+
+<style type="text/css">
+    .b-feed {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .b-avatar {
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        width: 280px;
+        height: 280px;
+    }
+
+    .b-avatar img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .b-feed {
+        max-width: 520px;
+        margin-left: auto;
+    }
+</style>
