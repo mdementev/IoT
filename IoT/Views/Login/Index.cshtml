@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/login")
+
+<div layout="row" ng-cloak>
+    <div flex class="md-whiteframe-11dp">
+        <md-content layout-padding>
+            <form name="projectForm" id="loginform">
+
+                <md-input-container class="md-block">
+                    <label>Your Email</label>
+                    <input required type="email" name="clientEmail" ng-model="project.clientEmail" id="email"
+                           minlength="10" maxlength="100" />
+                    <div ng-messages="projectForm.clientEmail.$error" role="alert">
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Your password</label>
+                    <input required type="password" name="clientPassword" ng-model="project.clientPassword" id="password"
+                           minlength="1" maxlength="100" />
+                    <div ng-messages="projectForm.clientEmail.$error" role="alert">
+                    </div>
+                </md-input-container>
+                <md-button class="md-raised md-primary" id="submitbutton">
+                    Log in
+                </md-button>
+                <div class="label" id="output">output</div>
+
+
+            </form>
+
+        </md-content>
+    </div>
+    
+</div>
