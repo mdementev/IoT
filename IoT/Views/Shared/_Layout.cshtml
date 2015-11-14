@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <!--<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>-->
 
     <title>@ViewBag.Title</title>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/bootstrap")
+    <!--@Scripts.Render("~/bundles/bootstrap")-->
 
     @Styles.Render("~/Content/bower_components/styles")
     @Scripts.Render("~/bundles/bower_components/angular")
@@ -38,13 +38,13 @@
                         md-direction="{{demo.selectedDirection}}">
             <md-fab-trigger class="align-with-text">
                 <md-button aria-label="menu" class="md-fab md-primary">
-                    <md-icon md-svg-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+                    <md-icon md-svg-src="~/Content/images/menu.svg"></md-icon>
                 </md-button>
             </md-fab-trigger>
             <md-toolbar>
                 <md-fab-actions class="md-toolbar-tools">
                     <md-button aria-label="photo" class="md-icon-button">
-                        <md-icon md-svg-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+                        <md-icon md-svg-src="~/Content/images/menu.svg"></md-icon>
                     </md-button>
                     <span>@Html.ActionLink("Log in", "Index", "Login", new { area = "" }, null)</span>
                     <span style="margin-left: 20px;">@Html.ActionLink("My aquarium", "mypage", "main", new { area = "" }, null)</span>
@@ -53,26 +53,9 @@
             </md-toolbar>
         </md-fab-toolbar>
 
-    <style type="text/css">
-        div.layout-row {
-            max-width: 1300px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
-
-    <script>
-        
-    </script>
-
-
 <div layout="row" flex>
     @RenderBody()
 </div>
 
-<script>
-
-
-</script>
+</body>
 </html>
-
