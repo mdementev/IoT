@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,10 +13,22 @@ namespace IoT.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public string[,] Get()
+        public string Get()
         {
-            
-            return new string[,] {{"temp","26"}, { "waterlevel", "5"} , {"korm","70"}, { "svet","30"}};
+            string returnedValue = "";
+            WebRequest wrGeturl = WebRequest.Create("http://192.168.2.15:1337/getvalues");
+
+            var responseStream = wrGeturl.GetResponse().GetResponseStream();
+            if (responseStream==null)
+            {
+                throw new Exception("Response stream from edison is null.");
+            }
+
+            using (var sr = new StreamReader(responseStream))
+            {
+                returnedValue = sr.ReadToEnd();
+            }
+            return returnedValue;
         }
 
         // GET api/values/5
