@@ -202,10 +202,11 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 		$scope.dataFood = 0;
 		$scope.dataLx 	= 0;
 
-		setInterval(function () {
+
+		var updateDataCurrent = function () {
+
 			$.ajax('/api/values', {complete: function(data){
-				$.each(JSON.parse(data.responseText), function(index, vals) {
-					console.log(vals[0])
+				$.each(JSON.parse(data.responseText), function (index, value) {
 					switch (vals[0]) {
 						case "dataTemp":
 							$scope.dataTemp = vals[1];
@@ -220,7 +221,12 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 					}
 				})
 			}});
-		}, 10000);
+		}
+
+		updateDataCurrent();
+		setInterval(function () {
+			updateDataCurrent();
+		}, 60000);
 
 		$scope.status = '  ';
 		$scope.showAdvanced = function (ev) {
