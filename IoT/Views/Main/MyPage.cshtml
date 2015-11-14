@@ -7,7 +7,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 	<div flex="5"></div>
 	<div flex="20">
 		<md-card class="b-avatar md-whiteframe-11dp">
-			<img alt="Sandeep Gravatar image" src='@Url.Content("~/Content/images/petushok.jpg")' />
+			<img alt="Sandeep Gravatar image" src='@Url.Content("~/Content/images/petushok.jpg")'/>
 		</md-card>
 
 		<div style="height: 30px;"></div>
@@ -31,32 +31,40 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 				<md-list>
 					<md-list-item class="md-2-line md-no-proxy" role="listitem">
 						<img width="40" height="40" src="~/Content/images/thermometer73.svg" class="md-avatar" alt="">
+
 						<div class="md-list-item-text">
 							<h3>{{dataTemp}}&deg;C</h3>
+
 							<p>Температура</p>
 						</div>
 					</md-list-item>
 					<md-divider></md-divider>
 					<md-list-item class="md-2-line md-no-proxy" role="listitem">
 						<img width="40" height="40" src="~/Content/images/illumination12.svg" class="md-avatar" alt="">
+
 						<div class="md-list-item-text">
 							<h3>{{dataLx}} лк(люкс)</h3>
+
 							<p>Освещенность</p>
 						</div>
 					</md-list-item>
 					<md-divider></md-divider>
 					<md-list-item class="md-2-line md-no-proxy" role="listitem">
 						<img width="40" height="40" src="~/Content/images/pet60.svg" class="md-avatar" alt="">
+
 						<div class="md-list-item-text">
 							<h3>{{dataLt}}</h3>
+
 							<p>Уровень воды</p>
 						</div>
 					</md-list-item>
 					<md-divider></md-divider>
 					<md-list-item class="md-2-line md-no-proxy" role="listitem">
 						<img width="40" height="40" src="~/Content/images/cat40.svg" class="md-avatar" alt="">
+
 						<div class="md-list-item-text">
 							<h3>{{dataFood}}%</h3>
+
 							<p>Корм</p>
 						</div>
 					</md-list-item>
@@ -77,12 +85,12 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 			<md-content>
 				<md-list>
 					<md-list-item class="md-3-line" ng-repeat="photo in photos" flex>
-						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40" />
-						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40" />
-						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40" />
-						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40" />
-						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40" />
-						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40" />
+						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40"/>
+						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40"/>
+						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40"/>
+						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40"/>
+						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40"/>
+						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40"/>
 					</md-list-item>
 				</md-list>
 			</md-content>
@@ -98,12 +106,12 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 			<md-content>
 				<md-list>
 					<md-list-item class="md-3-line" ng-repeat="video in videos" flex>
-						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40" />
-						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40" />
-						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40" />
-						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40" />
-						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40" />
-						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40" />
+						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40"/>
+						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40"/>
+						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40"/>
+						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40"/>
+						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40"/>
+						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40"/>
 					</md-list-item>
 				</md-list>
 			</md-content>
@@ -198,29 +206,31 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 	app.controller('AppCtrl', function ($scope, $mdDialog) {
 
 		$scope.dataTemp = 0;
-		$scope.dataLt 	= 0;
+		$scope.dataLt = 0;
 		$scope.dataFood = 0;
-		$scope.dataLx 	= 0;
+		$scope.dataLx = 0;
 
 
 		var updateDataCurrent = function () {
 
-			$.ajax('/api/values', {complete: function(data){
-				$.each(JSON.parse(data.responseText), function (index, value) {
-					switch (index) {
-						case "dataTemp":
-							$scope.dataTemp = value;
-						case "dataLt":
-							$scope.dataLt = value;
-						case "dataFood":
-							$scope.dataFood = value;
-						case "dataLx":
-							$scope.dataLx = value;
-						default:
-							console.log(JSON.parse(data.responseText));
-					}
-				})
-			}});
+			$.ajax('/api/values', {
+				complete: function (data) {
+					$.each(JSON.parse(data.responseText), function (index, value) {
+						switch (index) {
+							case "dataTemp":
+								$scope.dataTemp = value;
+							case "dataLt":
+								$scope.dataLt = value;
+							case "dataFood":
+								$scope.dataFood = value;
+							case "dataLx":
+								$scope.dataLx = value;
+							default:
+								console.log(data);
+						}
+					})
+				}
+			});
 		}
 
 		updateDataCurrent();
