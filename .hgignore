@@ -1,0 +1,5 @@
+syntax: glob
+IoT/obj/
+IoT.Azure/obj/
+packages/
+IoT/bin/
