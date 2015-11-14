@@ -12,10 +12,10 @@ namespace IoT.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public string[] Get()
+        public string[,] Get()
         {
             
-            return new string[] {"{'temp':'26','waterlevel':'5','korm':'70','svet':'30'}"};
+            return new string[,] {{"temp","26"}, { "waterlevel", "5"} , {"korm","70"}, { "svet","30"}};
         }
 
         // GET api/values/5
