@@ -3,12 +3,119 @@ ViewBag.Title = "MyPage";
 Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-	<md-card class="b-avatar md-whiteframe-11dp">
-		<img alt="Sandeep Gravatar image" src='@Url.Content("~/Content/images/petushok.jpg")' />
-	</md-card>
-</md-sidenav>
-<md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+<div layout="row" layout-wrap ng-controller="AppCtrl" flex="100">
+	<div flex="5"></div>
+	<div flex="20">
+		<md-card class="b-avatar md-whiteframe-11dp">
+			<img alt="Sandeep Gravatar image" src='@Url.Content("~/Content/images/petushok.jpg")' />
+		</md-card>
+
+		<div style="height: 30px;"></div>
+
+		<md-button style="width: 100%;" class="md-primary md-raised"></md-button>
+		<md-button style="width: 100%;" class="md-primary md-raised">Ритм жизни</md-button>
+		<md-button style="width: 100%;" class="md-primary md-raised">Show as Grid</md-button>
+		<md-button style="width: 100%;" class="md-primary md-raised">Show as Grid</md-button>
+	</div>
+	<div flex="5"></div>
+	<div flex="30">
+		<md-card>
+			<md-toolbar>
+				<div class="md-toolbar-tools">
+					<h3>
+						<span>Текущие показатели</span>
+					</h3>
+				</div>
+			</md-toolbar>
+			<md-content>
+				<md-list>
+					<md-list-item class="md-2-line md-no-proxy" role="listitem">
+						<img width="40" height="40" src="~/Content/images/thermometer73.svg" class="md-avatar" alt="">
+						<div class="md-list-item-text">
+							<h3>40&deg;C</h3>
+							<p>Температура</p>
+						</div>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item class="md-2-line md-no-proxy" role="listitem">
+						<img width="40" height="40" src="~/Content/images/illumination12.svg" class="md-avatar" alt="">
+						<div class="md-list-item-text">
+							<h3>20 лк(люкс)</h3>
+							<p>Освещенность</p>
+						</div>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item class="md-2-line md-no-proxy" role="listitem">
+						<img width="40" height="40" src="~/Content/images/pet60.svg" class="md-avatar" alt="">
+						<div class="md-list-item-text">
+							<h3>Норма</h3>
+							<p>Уровень воды</p>
+						</div>
+					</md-list-item>
+					<md-divider></md-divider>
+					<md-list-item class="md-2-line md-no-proxy" role="listitem">
+						<img width="40" height="40" src="~/Content/images/cat40.svg" class="md-avatar" alt="">
+						<div class="md-list-item-text">
+							<h3>80%</h3>
+							<p>Корм</p>
+						</div>
+					</md-list-item>
+				</md-list>
+			</md-content>
+		</md-card>
+	</div>
+	<div flex="5"></div>
+	<div flex="30">
+		<md-card>
+			<md-toolbar>
+				<div class="md-toolbar-tools">
+					<h3>
+						<span>Фото</span>
+					</h3>
+				</div>
+			</md-toolbar>
+			<md-content>
+				<md-list>
+					<md-list-item class="md-3-line" ng-repeat="photo in photos" flex>
+						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40" />
+						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40" />
+						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40" />
+						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40" />
+						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40" />
+						<img ng-src="{{photo.face}}?{{$index}}" class="md-avatar" alt="{{photo.who}}" width="40" height="40" />
+					</md-list-item>
+				</md-list>
+			</md-content>
+		</md-card>
+		<md-card>
+			<md-toolbar>
+				<div class="md-toolbar-tools">
+					<h3>
+						<span>Видео</span>
+					</h3>
+				</div>
+			</md-toolbar>
+			<md-content>
+				<md-list>
+					<md-list-item class="md-3-line" ng-repeat="video in videos" flex>
+						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40" />
+						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40" />
+						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40" />
+						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40" />
+						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40" />
+						<img ng-src="{{video.face}}?{{$index}}" class="md-avatar" alt="{{video.who}}" width="40" height="40" />
+					</md-list-item>
+				</md-list>
+			</md-content>
+		</md-card>
+	</div>
+	<div flex="5"></div>
+</div>
+
+
+<!--
+<md-sidenav flex="10" layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+
 </md-sidenav>
 <div layout="column" flex id="content" class="b-feed md-whiteframe-11dp" ng-controller="AppCtrl">
 
@@ -86,7 +193,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 	</md-dialog>
 
 </div>
-
+-->
 <script>
 	app.controller('AppCtrl', function ($scope, $mdDialog) {
 		$scope.status = '  ';
@@ -105,42 +212,27 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 					});
 		};
 
-		var imagePath = '@Url.Content("~/content/images/60.jpeg")';
-		$scope.todos = [
+		var photoFace = '@Url.Content("~/Content/images/60.jpeg")';
+		$scope.photos = [
 			{
-				face: imagePath,
-				what: 'Brunch this weekend?',
+				face: photoFace,
 				who: 'Min Li Chan',
-				when: '3:08PM',
-				notes: " I'll be in your neighborhood doing errands"
 			},
 			{
-				face: imagePath,
+				face: photoFace,
 				what: 'Brunch this weekend?',
+			}
+		];
+
+		var videoface = '@Url.Content("~/Content/images/kajshdiasd.jpeg")';
+		$scope.videos = [
+			{
+				face: videoface,
 				who: 'Min Li Chan',
-				when: '3:08PM',
-				notes: " I'll be in your neighborhood doing errands"
 			},
 			{
-				face: imagePath,
+				face: videoface,
 				what: 'Brunch this weekend?',
-				who: 'Min Li Chan',
-				when: '3:08PM',
-				notes: " I'll be in your neighborhood doing errands"
-			},
-			{
-				face: imagePath,
-				what: 'Brunch this weekend?',
-				who: 'Min Li Chan',
-				when: '3:08PM',
-				notes: " I'll be in your neighborhood doing errands"
-			},
-			{
-				face: imagePath,
-				what: 'Brunch this weekend?',
-				who: 'Min Li Chan',
-				when: '3:08PM',
-				notes: " I'll be in your neighborhood doing errands"
 			}
 		];
 	});

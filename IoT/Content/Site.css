@@ -1,7 +1,5 @@
-﻿div.layout-row {
-    max-width: 1300px;
-    margin-left: auto;
-    margin-right: auto;
+﻿.layout-wrap {
+    max-width: 1400px;
 }
 
 .md-toolbar-tools a:hover {
@@ -20,13 +18,6 @@ md-fab-toolbar md-fab-trigger .md-fab-toolbar-background {
     position: relative;
     border-radius: 50%;
     overflow: hidden;
-    width: 280px;
-    height: 280px;
-}
-
-.b-avatar img {
-    width: 100%;
-    height: 100%;
 }
 
 .b-feed {
