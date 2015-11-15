@@ -216,6 +216,26 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 
 			$scope.message = cbState;
 		};
+
+		var url = "http://192.168.2.115/IoT";
+
+		var getDatas = function() {
+
+			$.ajax(url+'/gettemp', {
+//				crossDomain: false,
+				complete: function (data) {
+					console.log(data);
+				}
+			})
+		}
+
+		getDatas();
+//		setTimeout(function () {
+//			setInterval(function () {
+//				getDatas()
+//			}, 5000)
+//		}, 5000)
+
 		/*
 		var updateDataCurrent = function () {
 
