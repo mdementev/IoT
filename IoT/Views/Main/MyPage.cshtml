@@ -40,7 +40,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 						<img width="40" height="40" src="~/Content/images/illumination12.svg" class="md-avatar" alt="">
 
 						<div class="md-list-item-text">
-							<h3>{{dataLx}} лк(люкс)</h3>
+							<h3>{{dataLx}} lux(люкс)</h3>
 
 							<p>Освещенность</p>
 						</div>
@@ -50,7 +50,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 						<img width="40" height="40" src="~/Content/images/pet60.svg" class="md-avatar" alt="">
 
 						<div class="md-list-item-text">
-							<h3>{{dataLt}}</h3>
+							<h3>{{dataLt}}%(Норма)</h3>
 
 							<p>Уровень воды</p>
 						</div>
@@ -79,7 +79,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 					</h3>
 				</div>
 			</md-toolbar>
-			<md-content style="height: 140px;" class="b-switches">
+			<md-content style="height: 200px;min-height: 200px;" class="b-switches">
 				<md-switch ng-model="ModeldataSetting.cb1" aria-label="Освещение" class="md-block" ng-change="setDataSetting('cb1', dataSetting.cb1)" ng-true-value="'включено'" ng-false-value="'выключено'">
 					Освещение
 				</md-switch>
@@ -199,10 +199,10 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 			cb6: false,
 		};
 
-		$scope.dataTemp = 0;
-		$scope.dataLt = 0;
-		$scope.dataFood = 0;
-		$scope.dataLx = 0;
+		$scope.dataTemp = 24;
+		$scope.dataLt = 98;
+		$scope.dataFood = 60;
+		$scope.dataLx = 120;
 
 		$scope.dt = {
 			t1: false,
@@ -216,7 +216,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 
 			$scope.message = cbState;
 		};
-
+		/*
 		var updateDataCurrent = function () {
 
 			$.ajax('/api/values', {
@@ -243,7 +243,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 		setInterval(function () {
 			updateDataCurrent();
 		}, 60000);
-
+		*/
 		$scope.status = '  ';
 		$scope.showAdvanced = function (ev) {
 			$mdDialog.show({
@@ -265,10 +265,6 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 			{
 				face: photoFace,
 				who: 'Min Li Chan',
-			},
-			{
-				face: photoFace,
-				what: 'Brunch this weekend?',
 			}
 		];
 
@@ -277,10 +273,6 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 			{
 				face: videoface,
 				who: 'Min Li Chan',
-			},
-			{
-				face: videoface,
-				what: 'Brunch this weekend?',
 			}
 		];
 	});
