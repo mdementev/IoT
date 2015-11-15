@@ -12,10 +12,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 
 		<div style="height: 30px;"></div>
 
-		<md-button style="width: 100%;" class="md-primary md-raised"></md-button>
-		<md-button style="width: 100%;" class="md-primary md-raised">Ритм жизни</md-button>
-		<md-button style="width: 100%;" class="md-primary md-raised">Show as Grid</md-button>
-		<md-button style="width: 100%;" class="md-primary md-raised">Show as Grid</md-button>
+		<!--<md-button style="width: 100%;" class="md-primary md-raised" ng-click="showAdvanced($event)">Ритм жизни</md-button>-->
 	</div>
 	<div flex="5"></div>
 	<div flex="30">
@@ -78,6 +75,32 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 			<md-toolbar>
 				<div class="md-toolbar-tools">
 					<h3>
+						<span>Управление</span>
+					</h3>
+				</div>
+			</md-toolbar>
+			<md-content style="height: 140px;" class="b-switches">
+				<md-switch ng-model="ModeldataSetting.cb1" aria-label="Освещение" class="md-block" ng-change="setDataSetting('cb1', dataSetting.cb1)" ng-true-value="'включено'" ng-false-value="'выключено'">
+					Освещение
+				</md-switch>
+				<md-switch ng-model="ModeldataSetting.cb2" aria-label="Подогрев" class="md-block" ng-change="setDataSetting('cb2', dataSetting.cb2)" ng-true-value="'включено'" ng-false-value="'выключено'">
+					Подогрев
+				</md-switch>
+				<md-switch ng-model="ModeldataSetting.cb3" aria-label="Красная подсветка" class="md-block" ng-change="setDataSetting('cb3', dataSetting.cb3)" ng-true-value="'включено'" ng-false-value="'выключено'">
+					Красная подсветка
+				</md-switch>
+				<md-switch ng-model="ModeldataSetting.cb4" aria-label="Зеленая подсветка" class="md-block" ng-change="setDataSetting('cb4', dataSetting.cb4)" ng-true-value="'включено'" ng-false-value="'выключено'">
+					Зеленая подсветка
+				</md-switch>
+				<md-switch ng-model="ModeldataSetting.cb5" aria-label="Синяя подсветка" class="md-block" ng-change="setDataSetting('cb5', dataSetting.cb5)" ng-true-value="'включено'" ng-false-value="'выключено'">
+					Синяя подсветка
+				</md-switch>
+			</md-content>
+		</md-card>
+		<md-card>
+			<md-toolbar>
+				<div class="md-toolbar-tools">
+					<h3>
 						<span>Фото</span>
 					</h3>
 				</div>
@@ -120,96 +143,75 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 	<div flex="5"></div>
 </div>
 
-
-<!--
-<md-sidenav flex="10" layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-
-</md-sidenav>
-<div layout="column" flex id="content" class="b-feed md-whiteframe-11dp" ng-controller="AppCtrl">
-
-	<md-button class="md-primary md-raised" ng-click="showAdvanced($event)" flex-sm="100" flex-md="100" flex-gt-md="auto">
-		Настройки
-	</md-button>
-
-	<md-content layout="column" flex class="md-padding b-feed-content">
-
-		<div ng-cloak class="b-feed-content">
-			<md-toolbar ng-if="true">
-				<div class="md-toolbar-tools">
-					<h3>
-						<span>Feed</span>
-					</h3>
-				</div>
-			</md-toolbar>
-			<md-content>
-				<md-list>
-					<md-list-item class="md-3-line" ng-repeat="item in todos">
-						<img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}"/>
-
-						<div class="md-list-item-text" layout="column">
-							<h3>{{ item.who }}</h3>
-							<h4>{{ item.what }}</h4>
-
-							<p>{{ item.notes }}</p>
-						</div>
-					</md-list-item>
-				</md-list>
-			</md-content>
+<md-dialog style="" id="md-dialog-settings" aria-label="Mango (Fruit)" ng-cloak>
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<h2>Mango (Fruit)</h2>
+			<span class="flex"></span>
+			<md-button class="md-icon-button" ng-click="cancel()">
+				<md-icon md-svg-src="~/Content/images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+			</md-button>
 		</div>
-
+	</md-toolbar>
+	<md-content style="width: 600px; height: 500px; padding: 10px 40px;">
+		<div layout>
+			<div flex="10" layout layout-align="center center">
+				<span class="md-body-1">R</span>
+			</div>
+			<md-slider flex min="0" max="100" ng-model="color.red" aria-label="red" id="red-slider" class>
+			</md-slider>
+			<div flex="20" layout layout-align="center center" style="padding-left: 20px;">
+				<input flex type="text" ng-model="color.red" aria-label="red" aria-controls="red-slider">
+			</div>
+		</div>
+		<div layout>
+			<div flex="10" layout layout-align="center center">
+				<span class="md-body-1">G</span>
+			</div>
+			<md-slider flex ng-model="color.green" min="0" max="100" aria-label="green" id="green-slider" class="md-accent">
+			</md-slider>
+			<div flex="20" layout layout-align="center center" style="padding-left: 20px;">
+				<input flex type="text" ng-model="color.green" aria-label="green" aria-controls="green-slider">
+			</div>
+		</div>
+		<h3>Disabled</h3>
+		<md-slider ng-model="disabled1" ng-disabled="true" aria-label="Disabled 1"></md-slider>
 	</md-content>
-
-	<md-dialog style="" id="md-dialog-settings" aria-label="Mango (Fruit)" ng-cloak>
-		<md-toolbar>
-			<div class="md-toolbar-tools">
-				<h2>Mango (Fruit)</h2>
-				<span class="flex"></span>
-				<md-button class="md-icon-button" ng-click="cancel()">
-					<md-icon md-svg-src="~/Content/images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-				</md-button>
-			</div>
-		</md-toolbar>
-		<md-content style="width: 600px; padding: 10px 40px;">
-			<h3>
-				RGB
-				<span ng-attr-style="border: 1px solid #333; background: rgb({{color.red}},{{color.green}},{{color.blue}})">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			</h3>
-
-			<div layout>
-				<div flex="10" layout layout-align="center center">
-					<span class="md-body-1">R</span>
-				</div>
-				<md-slider flex min="0" max="100" ng-model="color.red" aria-label="red" id="red-slider" class>
-				</md-slider>
-				<div flex="20" layout layout-align="center center" style="padding-left: 20px;">
-					<input flex type="text" ng-model="color.red" aria-label="red" aria-controls="red-slider">
-				</div>
-			</div>
-			<div layout>
-				<div flex="10" layout layout-align="center center">
-					<span class="md-body-1">G</span>
-				</div>
-				<md-slider flex ng-model="color.green" min="0" max="100" aria-label="green" id="green-slider" class="md-accent">
-				</md-slider>
-				<div flex="20" layout layout-align="center center" style="padding-left: 20px;">
-					<input flex type="text" ng-model="color.green" aria-label="green" aria-controls="green-slider">
-				</div>
-			</div>
-			<h3>Disabled</h3>
-			<md-slider ng-model="disabled1" ng-disabled="true" aria-label="Disabled 1"></md-slider>
-		</md-content>
-	</md-dialog>
-
-</div>
--->
+</md-dialog>
 <script>
+
 	app.controller('AppCtrl', function ($scope, $mdDialog) {
+
+		$scope.setDataSetting = function (type, value) {
+			$scope.dataSetting[type] = !value;
+			console.log(type, value);
+		}
+
+		$scope.dataSetting = {
+			cb1: false,
+			cb2: false,
+			cb3: false,
+			cb4: false,
+			cb5: false,
+		};
 
 		$scope.dataTemp = 0;
 		$scope.dataLt = 0;
 		$scope.dataFood = 0;
 		$scope.dataLx = 0;
 
+		$scope.dt = {
+			t1: false,
+			cb4: true,
+			cb5: false
+		};
+		$scope.message = 'false';
+		$scope.onChange = function (cbState) {
+
+			console.log(cbState);
+
+			$scope.message = cbState;
+		};
 
 		var updateDataCurrent = function () {
 
@@ -242,7 +244,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 		$scope.showAdvanced = function (ev) {
 			$mdDialog.show({
 						controller: DialogController,
-						template: $('#md-dialog-settings').html().toString(),
+						template: $('#md-dialog-settings').html(),
 						parent: angular.element(document.body),
 						targetEvent: ev,
 						clickOutsideToClose: true
