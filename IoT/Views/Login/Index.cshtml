@@ -4,33 +4,35 @@
 }
 @Scripts.Render("~/bundles/login")
 
-<div layout="row" ng-cloak>
-    <div flex class="md-whiteframe-11dp" style="width: 300px;margin-left: auto;max-width: 300px;padding: 0 20px 10px;">
-        <md-content layout-padding>
-            <h3 class="md-headline">Авторизация</h3>
-            <form name="projectForm" id="loginform">
-                <md-input-container class="md-block">
-                    <label>Ваш email</label>
-                    <input value="email@email.email" required type="email" name="clientEmail" ng-model="project.clientEmail" id="email"
-                           minlength="10" maxlength="100" />
-                    <!--<div ng-messages="projectForm.clientEmail.$error" role="alert"></div>-->
-                </md-input-container>
-                <md-input-container class="md-block">
-                    <label>Пароль</label>
-                    <input class="emailemail" required type="password" name="clientPassword" ng-model="project.clientPassword" id="password"
-                           minlength="1" maxlength="100" />
-                    <!--<div ng-messages="projectForm.clientEmail.$error" role="alert"></div>-->
-                </md-input-container>
-                <div style="text-align: right;padding-bottom: 10px;"><a href="#" class="b-link">Забыли пароль?</a></div>
-                <div style="text-align: center">
-                    <md-button type="submit" class="md-raised md-primary" id="submitbutton">
-                        Войти
-                    </md-button>
-                </div>
-            </form>
-        </md-content>
-    </div>
-    <p style="width: 500px;max-width: 500px;padding: 10px 30px;">
+<div flex="20"></div>
+<div flex="20">
+    <md-content layout-padding>
+        <h3 class="md-headline">Авторизация</h3>
+        <form name="projectForm" id="loginform">
+            <md-input-container class="md-block">
+                <label>Ваш email</label>
+                <input value="email@email.email" required type="email" name="clientEmail" ng-model="project.clientEmail" id="email"
+                       minlength="10" maxlength="100" />
+                <!--<div ng-messages="projectForm.clientEmail.$error" role="alert"></div>-->
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Пароль</label>
+                <input class="emailemail" required type="password" name="clientPassword" ng-model="project.clientPassword" id="password"
+                       minlength="1" maxlength="100" />
+                <!--<div ng-messages="projectForm.clientEmail.$error" role="alert"></div>-->
+            </md-input-container>
+            <div style="text-align: right;padding-bottom: 10px;"><a href="#" class="b-link">Забыли пароль?</a></div>
+            <div style="text-align: center">
+                <md-button type="submit" class="md-raised md-primary" id="submitbutton">
+                    Войти
+                </md-button>
+            </div>
+        </form>
+    </md-content>
+</div>
+<div flex="40">
+    <p style="padding: 100px 30px 0;">
         <span class="md-title">ВОКвариуме</span> - тематическая социальная сеть, созданная специально тех, кто влюблен в маленьких обиталетей подводного мира. И своей любовью расстапливает их холодные сердца.
     </p>
 </div>
+<div flex="20"></div>
