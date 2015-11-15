@@ -83,6 +83,9 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 				<md-switch ng-model="ModeldataSetting.cb1" aria-label="Освещение" class="md-block" ng-change="setDataSetting('cb1', dataSetting.cb1)" ng-true-value="'включено'" ng-false-value="'выключено'">
 					Освещение
 				</md-switch>
+				<md-switch ng-model="ModeldataSetting.cb6" aria-label="Насыщение кислородом" class="md-block" ng-change="setDataSetting('cb6', dataSetting.cb6)" ng-true-value="'включено'" ng-false-value="'выключено'">
+					Насыщение кислородом
+				</md-switch>
 				<md-switch ng-model="ModeldataSetting.cb2" aria-label="Подогрев" class="md-block" ng-change="setDataSetting('cb2', dataSetting.cb2)" ng-true-value="'включено'" ng-false-value="'выключено'">
 					Подогрев
 				</md-switch>
@@ -193,6 +196,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 			cb3: false,
 			cb4: false,
 			cb5: false,
+			cb6: false,
 		};
 
 		$scope.dataTemp = 0;
